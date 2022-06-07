@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zad1</title>
+</head>
+<body>
+
+<script>
+    function vnesi(){
+        let name = document.getElementById("name").value;
+        let surname = document.getElementById("surname").value;
+        let index = document.getElementById("index").value;
+        let subject = document.getElementById("subject").value;
+        let grade = document.getElementById("grade").selectedOptions[0].value;
+
+        let table = document.getElementById("table");
+
+        let row = table.insertRow(-1);
+        let cellName = row.insertCell(0);
+        let cellSurname = row.insertCell(1);
+        let cellIndex = row.insertCell(2);
+        let cellSubject = row.insertCell(3);
+        let cellGrade = row.insertCell(4)
+
+        cellName.innerHTML = name;
+        cellSurname.innerHTML = surname;
+        cellIndex.innerHTML = index;
+        cellSubject.innerHTML = subject;
+        cellGrade.innerHTML = grade;
+
+    }
+</script>
+
+<div class="form">
+    <h5>Име: </h5>
+    <input type="text" id = 'name'>
+    <h5>Презиме: </h5>
+    <input type="text" id = 'surname'>
+    <h5>Индекс: </h5>
+    <input type="text" id = 'index'>
+    <h5>Предмет: </h5>
+    <input type="text" id = 'subject'>
+    <select name="grade" id="grade">
+        <option value="5">5(пет)</option>
+        <option value="6">6(шест)</option>
+        <option value="7">7(седум)</option>
+        <option value="8">5(осум)</option>
+        <option value="9">9(девет)</option>
+        <option value="10">10(десет)</option>
+    </select>
+    <button onclick="vnesi()">Внеси</button>
+</div>
+<table id="table">
+    <tr>
+        <th>Име</th>
+        <th>Презиме</th>
+        <th>Индекс</th>
+        <th>Предмет</th>
+        <th>Оцена</th>
+    </tr>
+</table>
+</body>
+</html>
