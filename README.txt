@@ -5,3 +5,4 @@ Task2-Format phone numbers to XXX/XXX-XXX and display wich operator it belongs t
 Task3-Finding the longest word in a sentence.
 Task4-Find if the sign is negative or positive when mulitplicating 3 integers
 Task5-Printing the sequence of numbers from 1 to 30 and determining wich number is even and odd.
+Task6-Adding two complex numbers
