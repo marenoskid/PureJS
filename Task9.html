@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dimitar Marenoski 201151</title>
+    <link rel="stylesheet" href="jquery/jquery-ui.css">
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <style>
+        h1{
+            display: inline-block;
+            border: 2px solid black;
+            padding: 10px
+        }
+        li{
+            list-style-type: none;
+            position: relative;
+            right: 35px;
+            border: 2px solid black;
+            height: 40px;
+            width: 850px;
+        }
+        #deleted{
+            position: relative;
+            bottom: 350px;
+            left: 500px;
+        }
+        #tabela,td{
+            border: 2px solid black;
+        }
+        #deleted td{
+            display: block;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div id="entrance">
+    <h2>Post Details</h2>
+    <p>Title:</p>
+    <input type="text" id="title">
+    <p>Post:</p>
+    <textarea id="desciption" rows="5" cols="33">Enter description.</textarea>
+    <p>Content type:</p>
+    <input type="radio" id="free" name="option" value="Free"><label>Free</label>
+    <input type="radio" id="paid" name="option" value="Paid"><label>Paid</label>
+    <p>Category:</p>
+    <select id="list">
+        <option value="Science">Science</option>
+        <option value="Education">Education</option>
+        <option value="Industry">Industry</option>
+    </select>
+    <input type="button" onclick="vnesi()" value="Vnesi">
+</div>
+<div id="numberPublished">
+    <h1>Published posts:</h1>
+    <h1 id="result"></h1>
+</div>
+
+<div id="display">
+    <table id="tabela">
+        <tr>
+            <td>Title</td>
+            <td>Post</td>
+            <td>Link</td>
+            <td>Type</td>
+            <td>Category</td>
+            <td>Actions</td>
+        </tr>
+    </table>
+</div>
+<div id="deleted">
+    <h2>Deleted Elements</h2>
+</div>
+
+<script>
+    let counter = 0;
+    function publish(clickedButton){
+       let fullRow = clickedButton.parentNode.parentNode
+       fullRow.style.background = "lightblue"
+        let publishButton = clickedButton
+        publishButton.disabled = true
+        let removeButton = clickedButton.parentNode.parentNode.lastChild.firstChild
+        removeButton.disabled = true
+        counter++
+        document.getElementById("result").innerText = counter;
+    }
+    function remove(clickedButton){
+        let link = clickedButton.parentNode.previousSibling.previousSibling.previousSibling.previousSibling
+        let deletedDataSet = document.getElementById("deleted")
+        deletedDataSet.appendChild(link)
+        let row = clickedButton.parentNode.parentNode
+        row.remove()
+    }
+
+    function vnesi(){
+
+        let title = document.getElementById("title").value
+        let desc = document.getElementById("desciption").value
+        let type = document.getElementsByName("option")
+        let selected
+        for(let i=0;i<type.length;i++){
+            if(type[i].checked){
+                selected = type[i].value;
+            }
+        }
+        let category = document.getElementById("list").value
+        let link = "www.finki.ukim.mk/"+title;
+        let tabela = document.getElementById("tabela")
+
+
+        if(title === "" || desc === "Enter description." || desc === "" || selected === undefined){
+            alert("Vnesete gi site polinja!")
+        }else{
+            tabela.innerHTML +=
+                "<tr><td>"+title+
+                "</td><td>"+desc+
+                "</td><td>"+link+
+                "</td><td>"+selected+
+                "</td><td>"+category+
+                "</td><td><button id='publish' onclick='publish(this)'>Publish</button>"+
+                "</td><td><button id='remove' onclick='remove(this)'>Remove</button></td></tr>"
+        }
+    }
+</script>
+</body>
+</html>
