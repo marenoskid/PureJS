@@ -9,3 +9,4 @@ Task6-Adding two complex numbers
 Task7-JavaScript program to display the reading status (i.e. display book name, author name and reading status) of the following books.
 Task8-Simulating a teacher's online evidence application for X student's grade and basic info.
 Task9-Posting articles simulation and keeping info in a table using JS.
+Task10- Displaying all the words from the text box with a random color at a random place
