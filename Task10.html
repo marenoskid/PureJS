@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dimitar Marenoski 201151</title>
+    <link rel="stylesheet" href="jquery/jquery-ui.css">
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <style>
+        #input{
+            height: 250px;
+        }
+        li{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<textarea id="input">
+
+</textarea><br>
+<button id="button">Прикажи</button>
+            <script>
+                $("#button").click(function (){
+                    $("#input, #button").hide()
+
+                    const input =  $("#input").val()
+                    let arr = input.split(/\n|\s/)
+                    let words = arr.filter(Boolean) // -1
+                    const occurences = {}
+                    words.forEach(word => {
+                        if(occurences[word])
+                            occurences[word] += 1
+                        else
+                            occurences[word] = 1
+                    })
+                       for (key in occurences) {
+                           let element = $("<p>")
+                           let color = "#"
+                           let letters = '0123456789ABCDEF'
+                           for (let i = 0; i < 6; i++) {
+                               color += letters[Math.floor(Math.random() * 16)];
+                           }
+                           element.css("color", color)
+                           element.text(`${key}`)
+                           if (`${occurences[key]}` == 1) {
+                               element.css("font-size", "15px")
+                           }
+                           if (`${occurences[key]}` == 2) {
+                               element.css("font-size", "20px")
+                           }
+                           if (`${occurences[key]}` == 3) {
+                               element.css("font-size", "25px")
+                           }
+                           if (`${occurences[key]}` == 4) {
+                               element.css("font-size", "30px")
+                           }
+                           if (`${occurences[key]}` == 5) {
+                               element.css("font-size", "35px")
+                           }
+                           if (`${occurences[key]}` >= 6) {
+                               element.css("font-size", "50px")
+                           }
+                           element.css({
+                               "left": Math.random() * window.outerWidth,
+                               "top": Math.random() * window.outerHeight,
+                               "position": "absolute"
+                           })
+                               element.appendTo("body")
+                       }
+
+                })
+            </script>
+</body>
+</body>
+</html>
